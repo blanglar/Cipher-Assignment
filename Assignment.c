@@ -28,16 +28,22 @@ printf("\n");
         perror("fopen()");
     }
     char mess[511];
-    fscanf(input2,"%s",mess);
-    /*int i2;
-    for(i2=0;i2<511;i++){
-       if(mess[i] == NULL){
-        printf(" "); 
-        }
-    printf("%c",mess[i]);
-    }*/
-    printf("%s",mess);
-    printf("hisdkasd");
+    fscanf(input2,"%511[^\t]s",mess);
+    printf("%s\n",mess);
+    int i2;
+    int rot;
+    for(rot=1;rot<26;rot++){//This prints every cipher rotation
+        printf("Rotation of -%d\n",rot');
+        for(i2=0;i2<511;i2++){
+            mess[i2]=mess[i2] - 1;
+            if((mess[i2]<65)&&(mess[i2]>38)){ //if ASCII value lower than A then make it Z
+                mess[i2]=mess[i2] + 26; 
+            }
+            printf("%c",mess[i2]);
+    }
+    printf("\n");
+    }
+    
     
     
 return 0;
