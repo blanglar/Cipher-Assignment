@@ -72,16 +72,17 @@ int main(){
 /* Decryption of roatation cipher testing without terminal*/
 
     fscanf(input2,"%511[^\t]s",mess);
-            printf("This text uses a cipher rotation of -7\n%s\n",mess);
- /*This prints every cipher rotation*/           
+            printf("This text uses a cipher rotation of -7\n%s\n",mess);           
             
             for(i2=0;i2<511;i2++){
+                if(mess[i2] == NULL){
+                   const char mess[i2];
+                }
                 mess[i2]=mess[i2] - 7;
-                if((mess[i2]<65)&&(mess[i2]>57)){ //if ASCII value lower than A then make it Z
+                if ((mess[i2]<65)&&(mess[i2]>57)){ //if ASCII value lower than A then make it Z
                     mess[i2]=mess[i2] + 26;
-                } 
-                
-            }
+                }
+             }
             printf("%s",mess);
             printf("\n");
             
