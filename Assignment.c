@@ -31,6 +31,7 @@ int main(){
     printf("(a) Encryption of a message with a rotation cipher given the message text and rotation amount\n");
     printf("(b) Decryption of a message encrypted with a rotation cipher given cipher text and rotation amount\n");
     printf("(c) Encryption of a message with a substitution cipher given message text and alphabet substitution\n");
+    printf("(d) ");
 /* Variables for case 'a'*/
     char word[5];
     int i;
@@ -41,7 +42,6 @@ int main(){
     char key[25];
     char text[23];
     int i3;
-
 /* User input for task selection */  
     char select;
     scanf("%c",&select);
@@ -50,7 +50,7 @@ int main(){
         case 'a':
             fscanf(input1,"%s",word);
             printf("The word '%s' was read from input1.\n",word);
-            printf("The word %s with a rotation cipher of 2 is ",word);
+            printf("The word '%s' with a rotation cipher of 2 is ",word);
             for(i = 0;i<5;i++){
                 word[i]=word[i] - 2;
                 if(word[i]<65){
@@ -62,24 +62,27 @@ int main(){
             break;
 /* Task 2 - Rotation Cipher Decryption with key and text */
         case 'b':
-            fscanf(input2,"%511[^\t]s",mess);
+            fscanf(input2,"%[^\n]%*c",mess);
             printf("The text below is read from the file input2 and uses a rotation of 7;\n%s\n\n",mess);           
             for(i2=0;i2<511;i2++){
-                mess[i2]=mess[i2] - 7;
-                if((mess[i2]<65)&&(mess[i2]>57)){ //if ASCII value lower than A then make it Z
+                if((mess[i2]>=65)&&(mess[i2]<=90)){
+                    mess[i2]=mess[i2] - 7;
+                    if(mess[i2]<65){ //if ASCII value lower than A then make it Z
                     mess[i2]=mess[i2] + 26;
-                }  
+                }
+                }
+                  
             }
             printf("The text from input2 decrypted reads;\n%s\n",mess);
             break;
 /* Task 3 - Substitution Cipher with Key and Text */       
         case 'c':
             fscanf(SubCipher,"%s",key);
-            fscanf(Task3text,"%23[^\t]s",text);
-            printf("The phrase '%s' using the substitution key   '%s' is;\n\n",text,key);
+            fscanf(Task3text,"%[^\t]s",text);
+            printf("The phrase '%s' is read from the file Task3text.\n",text);
+            printf("The phrase '%s' using the substitution key '%s' is;\n\n",text,key);
             for(i3=0;i3<23;i3++){
                 switch(text[i3]){
-                    case '\0': printf(" ");
                     case 'A': text[i3] = key[0];    break;
                     case 'B': text[i3] = key[1];    break;
                     case 'C': text[i3] = key[2];    break;
@@ -106,19 +109,21 @@ int main(){
                     case 'X': text[i3] = key[23];   break;
                     case 'Y': text[i3] = key[24];   break;
                     case 'Z': text[i3] = key[25];   break;
-                    default: /*printf("Something went wrong!\n");*/    break;
+                    default:    break;
                 }
                 printf("%c",text[i3]);
             }
             printf("\n");
             break;
-            
+/* */
+        case 'd':    
         default:
-            printf("That's not an option. Run the program and try again.\n\n");
+            printf("\nThat's not an option. Please select a letter corresponding with the task you wish to select. Please run the program and try again.\n\n");
             break;
             
     }
-     
+    
     printf("\n");
+    
 return 0;
 }
